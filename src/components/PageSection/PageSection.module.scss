@@ -1,0 +1,18 @@
+.page-section {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	line-height: 1.5;
+	margin: 0 auto;
+	padding: 5rem;
+	width: 80rem;
+
+	@media (max-width: 1000px) {
+		width: 100%;
+	}
+
+	@media (max-width: 500px) {
+		padding: 2rem;
+	}
+}

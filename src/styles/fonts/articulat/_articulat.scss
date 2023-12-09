@@ -1,0 +1,31 @@
+$fontWeights: (
+	100,
+	200,
+	300,
+	400,
+	500,
+	600,
+	700,
+	800,
+	900,
+);
+
+@each $fontWeight in $fontWeights {
+	@font-face {
+		font-family: 'Articulat';
+		src: url('./articulat-#{$fontWeight}.woff2') format('woff2');
+		font-display: auto;
+		font-style: normal;
+		font-weight: $fontWeight;
+		font-stretch: normal;
+	}
+}
+
+@font-face {
+	font-family: 'Articulat';
+	src: url('./articulat-heavy.woff2') format('woff2');
+	font-display: auto;
+	font-style: normal;
+	font-weight: 1000;
+	font-stretch: normal;
+}

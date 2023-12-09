@@ -1,0 +1,49 @@
+.footer {
+	align-items: center;
+	background-color: hsla(var(--palette-black-hsl), 0.5);
+	backdrop-filter: blur(2px);
+	bottom: 0;
+	display: flex;
+	font-size: var(--font-size-small);
+	gap: 2rem;
+	justify-content: space-between;
+	padding: 2rem;
+	position: sticky;
+
+	@media (max-width: 700px) {
+		flex-direction: column;
+	}
+}
+
+.social-links {
+	display: flex;
+	font-size: 1.5em;
+	gap: 2rem;
+
+	.bsky:hover {
+		color: var(--palette-bsky-blue);
+	}
+
+	.discord:hover {
+		color: var(--palette-purple);
+	}
+
+	.itch:hover {
+		color: var(--palette-red);
+	}
+
+	.steam:hover {
+		color: var(--palette-light-grey);
+	}
+
+	.youtube:hover {
+		color: var(--palette-red);
+	}
+
+	@media (max-width: 700px) {
+		justify-content: space-between;
+		gap: 0.1rem;
+		max-width: 35rem;
+		width: 100%;
+	}
+}
