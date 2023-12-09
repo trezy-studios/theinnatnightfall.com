@@ -2,15 +2,15 @@
 
 // Module imports
 import {
-	event as trackEvent,
 	GoogleAnalytics,
+	event as trackEvent,
 } from 'nextjs-google-analytics'
-import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 import { config as fontAwesomeConfig } from '@fortawesome/fontawesome-svg-core'
-import NextHead from 'next/head.js'
 import { MDXProvider } from '@mdx-js/react'
+import NextHead from 'next/head.js'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 
 
 
@@ -98,7 +98,15 @@ App.propTypes = {
 	pageProps: PropTypes.object,
 }
 
-export function reportWebVitals({ id, name, label, value }) {
+// eslint-disable-next-line jsdoc/require-jsdoc
+export function reportWebVitals(config) {
+	const {
+		id,
+		name,
+		label,
+		value,
+	} = config
+
 	trackEvent(name, {
 		category: (label === 'web-vital') ? 'Web Vitals' : 'Next.js custom metric',
 		value: Math.round((name === 'CLS') ? (value * 1000) : value),

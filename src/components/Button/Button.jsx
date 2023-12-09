@@ -1,11 +1,13 @@
 // Style imports
+import {
+	useCallback,
+	useMemo,
+} from 'react'
+import classnames from 'classnames'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { motion } from 'framer-motion'
-import classnames from 'classnames'
 import PropTypes from 'prop-types'
-import { useMemo } from 'react'
-
 
 
 
@@ -54,6 +56,18 @@ export function Button(props) {
 		onMouseOver,
 	} = props
 
+	const handleMouseOut = useCallback((...args) => {
+		if (onMouseOut) {
+			onMouseOut(...args)
+		}
+	}, [onMouseOut])
+
+	const handleMouseOver = useCallback((...args) => {
+		if (onMouseOver) {
+			onMouseOver(...args)
+		}
+	}, [onMouseOver])
+
 	const compiledClassName = useMemo(() => {
 		return classnames(styles['button'], className, {
 			[styles['is-auxiliary']]: isAuxiliary,
@@ -72,13 +86,13 @@ export function Button(props) {
 	])
 
 	return (
-		// eslint-disable-next-line react/forbid-elements
+		// eslint-disable-next-line react/forbid-elements, jsx-a11y/mouse-events-have-key-events
 		<button
 			className={compiledClassName}
 			disabled={isDisabled}
 			onClick={onClick}
-			onMouseOver={onMouseOver}
-			onMouseOut={onMouseOut}
+			onMouseOut={handleMouseOut}
+			onMouseOver={handleMouseOver}
 			type={isSubmit ? 'submit' : 'button'}>
 			<motion.span
 				animate={isLoading ? 'hidden' : 'visible'}
@@ -107,14 +121,13 @@ Button.defaultProps = {
 	className: '',
 	isAuxiliary: false,
 	isDisabled: false,
-	isFullWidth: false,
 	isLink: false,
 	isLoading: false,
 	isPrimary: false,
 	isSubmit: false,
 	onClick: null,
-	onMouseOut: () => {},
-	onMouseOver: () => {},
+	onMouseOut: null,
+	onMouseOver: null,
 }
 
 Button.propTypes = {
