@@ -15,7 +15,7 @@ const withMDX = require('@next/mdx')
 
 /** @type {import('next').NextConfig} */
 const config = {
-	redirects() {
+	async redirects() {
 		return [
 			{
 				source: '/epic-games',
