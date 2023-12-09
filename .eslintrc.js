@@ -36,7 +36,6 @@ module.exports = {
 		sourceType: 'module',
 	},
 	plugins: [
-		'better-docs/component',
 		'editorconfig',
 		'jsdoc',
 		'react',
